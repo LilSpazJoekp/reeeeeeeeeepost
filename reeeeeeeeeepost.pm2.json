@@ -1,0 +1,10 @@
+{
+	"apps": [{
+		"name": "MagicEye",
+		"script": "npm",
+		"args": "start",
+        "log_date_format": "MM-DD-YYYY hh:mm:ss A",
+        "combine_logs": true,
+        "vizion": true
+	}]
+}
