@@ -11,7 +11,7 @@ import { getSubredditSettings, setSubredditSettings } from './master_database_ma
 
 export async function createDefaultSettings(subredditName, masterSettings, reddit) {
     log.info(`[${subredditName}]`, 'Creating default settings for', subredditName, '...');
-    const wikiPage = await reddit.getSubreddit(subredditName).getWikiPage('magic_eye');
+    const wikiPage = await reddit.getSubreddit(subredditName).getWikiPage('reeeeeeeeeepost');
 
     try {
         const settings = JSON.parse(await wikiPage.content_md);
@@ -41,7 +41,7 @@ export async function createDefaultSettings(subredditName, masterSettings, reddi
 
 export async function writeSettings(subredditName, masterSettings, reddit) {
     log.info(`[${subredditName}]`, 'Upgrading settings for', subredditName, '...');
-    const wikiPage = await reddit.getSubreddit(subredditName).getWikiPage('magic_eye');
+    const wikiPage = await reddit.getSubreddit(subredditName).getWikiPage('reeeeeeeeeepost');
 
     const stringSettings = JSON.stringify(masterSettings.settings, null, 4);
     const indentedSettings = indentString(stringSettings, 4);
@@ -61,7 +61,7 @@ export async function writeSettings(subredditName, masterSettings, reddit) {
 export async function doUpdateSettings(subredditName, change, reddit) {
     log.info('Updating settings for', subredditName);
     const subreddit = await reddit.getSubreddit(subredditName); 
-    const wikiPage = await subreddit.getWikiPage('magic_eye');
+    const wikiPage = await subreddit.getWikiPage('reeeeeeeeeepost');
     let settings;
     try {
         settings = JSON.parse(await wikiPage.content_md);

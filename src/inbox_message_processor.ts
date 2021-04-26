@@ -14,7 +14,7 @@ import { updateModdedSubreddits } from './modded_subreddits';
 export async function processInboxMessage(inboxMessage, reddit, database, messageSubreddit, masterSettings) {
     const subredditName = messageSubreddit ? messageSubreddit.display_name : null;
     const subreddit = messageSubreddit ? await reddit.getSubreddit(subredditName) : null;
-    
+
     if (inboxMessage.author && inboxMessage.author.name === process.env.ACCOUNT_USERNAME) {
         log.warn('Ignoring message from self...', inboxMessage.id);
         return;
@@ -22,7 +22,7 @@ export async function processInboxMessage(inboxMessage, reddit, database, messag
 
     if (inboxMessage.was_comment) {
         const moderators = await subreddit.getModerators();
-        const isMod = moderators.find((moderator) => moderator.name === inboxMessage.author.name || inboxMessage.author.name === "CosmicKeys");
+        const isMod = moderators.find((moderator) => moderator.name === inboxMessage.author.name || inboxMessage.author.name === "Lil_SpazJoekp");
         if (isMod) {
             await processModComment(subredditName, inboxMessage, reddit, database, masterSettings);
         } else {
@@ -68,11 +68,11 @@ async function processUserComment(subredditName, inboxMessage, reddit, masterSet
     if (masterSettings.settings.onUserReply && masterSettings.settings.onUserReply === "reportBot") {
         const botComment = await getBotComment(reddit, inboxMessage);
         // await botComment.report({'reason': 'User comment - "' + inboxMessage.body.substring(0, 83) + '"'}); // 100 char limit
-        await botComment.report({'reason': 'Moderator requested - click context for details'});
+        // await botComment.report({'reason': 'Moderator requested - click context for details'});
     } else {
-        inboxMessage.report({'reason': 'Moderator requested'});
+        // inboxMessage.report({'reason': 'Moderator requested'});
     }
-    
+
     log.info(`[${subredditName}]`, 'User requesting assistance:', inboxMessage.id);
 }
 
@@ -115,7 +115,7 @@ async function processUserPrivateMessage(inboxMessage, subreddit, reddit) {
         inboxMessage.reply("I am a robot so I cannot answer your message. Contact the moderators of the subreddit for information.");
         log.info('Processed inbox private message with standard reply:', inboxMessage.id);
     } else {
-        log.info('Processed inbox private message - ignored mod thread:', inboxMessage.id);    
+        log.info('Processed inbox private message - ignored mod thread:', inboxMessage.id);
     }
 }
 
@@ -174,7 +174,7 @@ async function runCommand(inboxMessage, reddit, database, masterSettings, comman
 async function command_clearSubmission(submission, existingMagicSubmission, database) {
     log.info(chalk.yellow('Clearing magic submission by: '), await submission.author.name, ', submitted: ', new Date(await submission.created_utc * 1000));
     await database.deleteMagicSubmission(existingMagicSubmission);
-    return true; 
+    return true;
 }
 
 async function command_removeDuplicate(submission, existingMagicSubmission, database) {
@@ -182,13 +182,13 @@ async function command_removeDuplicate(submission, existingMagicSubmission, data
     const duplicateIndex = existingMagicSubmission.duplicates.indexOf(await submission.id);
     existingMagicSubmission.duplicates.splice(duplicateIndex, 1);
     await database.saveMagicSubmission(existingMagicSubmission);
-    return true; 
+    return true;
 }
 
 async function command_setExactMatchOnly(submission, existingMagicSubmission, database) {
     log.info(chalk.yellow('Setting exact match only for submission by: '), await submission.author.name, ', submitted: ', new Date(await submission.created_utc * 1000));
     existingMagicSubmission.exactMatchOnly = true;
     await database.saveMagicSubmission(existingMagicSubmission);
-    return true; 
+    return true;
 }
 

@@ -26,7 +26,7 @@ export async function mainSettingsProcessor() {
             const subredditsMultiString = subredditsToProcess.map(sub => sub + "+").join("").slice(0, -1); // rarepuppers+pics+MEOW_IRL
             const subredditMulti = await reddit.getSubreddit(subredditsMultiString);
             const wikiChanges = await subredditMulti.getModerationLog({type: 'wikirevise'});
-            const newChanges = wikiChanges.filter(change => change.details.includes('Page magic_eye edited') && change.mod != process.env.ACCOUNT_USERNAME);
+            const newChanges = wikiChanges.filter(change => change.details.includes('Page reeeeeeeeeepost edited') && change.mod != process.env.ACCOUNT_USERNAME);
             const unprocessedChanges = await consumeUnprocessedWikiChanges(newChanges);
             for (const change of unprocessedChanges) {
                 const subredditName = await change.subreddit.display_name;

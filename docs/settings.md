@@ -2,7 +2,7 @@
 
 Like AutoModerator, Magic Eye is configured using a wiki page that stores subreddit settings:
 
-http://www.reddit.com/r/YOUR_SUB_NAME/wiki/magic_eye
+http://www.reddit.com/r/YOUR_SUB_NAME/wiki/reeeeeeeeeepost
 
 -   The settings are in JSON format. It is a different format from what AutoModerator uses, but it is still human readable.
 

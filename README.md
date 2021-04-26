@@ -35,7 +35,7 @@ Once you've invited Magic Eye as a mod it will:
 
 -   Accept the invite
 -   Build a database from the `/new` and `/top` posts in your subreddit (can take up to an hour)
--   Create a settings page in your wiki at `r/YOUR_SUB_NAME/wiki/magic_eye`
+-   Create a settings page in your wiki at `r/YOUR_SUB_NAME/wiki/reeeeeeeeeepost`
 -   Send you a modmail to let you know it has finished initialising and is active
 
 _Please only add one subreddit at a time, and wait for it to complete._

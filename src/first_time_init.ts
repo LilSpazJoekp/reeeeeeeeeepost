@@ -62,7 +62,7 @@ export async function firstTimeInit(reddit, subredditName, database, masterSetti
                 * Remove [images you choose to blacklist](https://github.com/downfromthetrees/the_magic_eye/blob/master/README.md#remove-blacklisted-images)
                 * Remove broken image links
     
-                Like AutoModerator I have a wiki page where you can edit settings. Here is a link to your settings page: r/${subredditName}/wiki/magic_eye
+                Like AutoModerator I have a wiki page where you can edit settings. Here is a link to your settings page: r/${subredditName}/wiki/reeeeeeeeeepost
                 
                 You can learn all about me at r/MAGIC_EYE_BOT or see the full documentation below:
     
